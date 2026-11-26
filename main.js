@@ -4,11 +4,11 @@
   /* ---------- i18n: Chinese lives in the HTML, English here ---------- */
   const EN = {
     'skip': 'Skip to content',
-    'nav.tech': 'Technology', 'nav.evo': 'EVO', 'nav.platform': 'Developers', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.cta': 'Join the beta',
-    'hero.eyebrow': 'AI interactive entertainment · Shenzhen',
+    'nav.tech': 'Technology', 'nav.evo': 'EVO', 'nav.platform': 'Developers', 'nav.about': 'About', 'nav.contact': 'Contact', 'nav.cta': 'Sign up',
+    'hero.eyebrow': 'CES 2027 · Jan 6–9 · Las Vegas',
     'hero.title': 'Motion play, made part of everyday family life',
     'hero.lead': 'No controllers. No wearables. Step in front of the screen and your body is the controller. FitX builds its own spatial intelligence engine to turn the living room into a playground for the whole family.',
-    'hero.cta1': 'Meet EVO', 'hero.cta2': 'Partner with us',
+    'hero.cta1': 'Book a demo at CES', 'hero.cta2': 'Meet EVO',
     'stat.1': 'Real-time tracking', 'stat.2': 'Pose estimation error', 'stat.3': 'On-device. Video never leaves home', 'stat.4u': ' players', 'stat.4': 'On one screen',
     'tech.eyebrow': 'Core technology', 'tech.title': 'The FitX Spatial Intelligence Engine',
     'tech.sub': 'Motion gaming has long been held back by sensing: controllers guess, and pro motion capture costs too much. We rebuilt the algorithms from the ground up, so one ordinary camera can understand the whole body.',
@@ -26,9 +26,6 @@
     'evo.p3.t': 'Always something new', 'evo.p3.d': 'Original games and experiences keep arriving.',
     'evo.games': 'Six ways to play, for every family moment',
     'g.1': 'Party & Pranks', 'g.2': 'Rhythm & Dance', 'g.3': 'Competitive Challenges', 'g.4': 'Fitness & Sports', 'g.5': 'Adventure & Action', 'g.6': 'Casual Fun',
-    'beta.title': 'The EVO closed beta is coming',
-    'beta.desc': 'Leave your email for closed beta access, product sneak peeks and pioneer rewards. Spots are limited.',
-    'beta.label': 'Email address', 'beta.btn': 'Request access',
     'evo.more': 'Visit the EVO product site at fitx.games →',
     'plat.eyebrow': 'Open platform', 'plat.title': 'Motion intelligence for every creator',
     'plat.sub': 'Hardware is the way in; the platform is the long-term value. We package our engine as an SDK, so small teams can build great motion experiences without writing the algorithms themselves.',
@@ -48,11 +45,31 @@
     'ct.biz': 'Business & partnerships', 'ct.jobs': 'Careers',
     'ct.jobs.d': 'Want to build this with us? Email your résumé and tell us the role you have in mind.',
     'ct.addr': 'Address', 'ct.addr.d': 'Nanshan District, Shenzhen, China',
+    'su.title': 'See you at CES 2027',
+    'su.desc': 'We will be in Las Vegas on January 6–9. Leave your details to book a hands-on EVO demo, and be first to get closed beta access and product news.',
+    'su.booth': 'Booth details coming soon',
+    'su.name': 'Name', 'su.email': 'Email', 'su.company': 'Company (optional)', 'su.role': 'I am a',
+    'r.0': 'Select one', 'r.1': 'Player or family', 'r.2': 'Game developer or studio', 'r.3': 'Retail or distribution', 'r.4': 'Media', 'r.5': 'Investor', 'r.6': 'Other',
+    'su.consent': 'I agree that FitX may contact me about CES and product updates.',
+    'su.btn': 'Sign up',
+    'msg.name': 'Please enter your name.',
+    'msg.role': 'Please tell us who you are.',
+    'msg.consent': 'Please tick the box so we can contact you.',
+    'msg.sending': 'Sending…',
+    'msg.done': 'You are signed up. See you at CES!',
+    'msg.fail': 'Something went wrong. Please try again, or email info@fitx.games.',
     'msg.bad': 'Please enter a valid email address.',
     'msg.ok': 'Your email app should now open with the request ready to send.',
     'title': 'FitX | AI Interactive Entertainment Platform',
   };
-  const ZH = { 'msg.bad': '请输入有效的邮箱地址。', 'msg.ok': '已为你打开邮件应用，发送即可完成申请。', 'title': document.title };
+  const ZH = {
+    'msg.bad': '请输入有效的邮箱地址。', 'msg.ok': '已为你打开邮件应用，发送即可完成报名。',
+    'msg.name': '请填写姓名。', 'msg.role': '请选择你的身份。', 'msg.consent': '请勾选同意，方便我们联系你。',
+    'msg.sending': '提交中…', 'msg.done': '报名成功，CES 见！', 'msg.fail': '提交失败，请稍后重试，或直接发邮件到 info@fitx.games。',
+    'title': document.title,
+  };
+  const cfg = window.FITX_CONFIG || {};
+  const boothEl = document.getElementById('booth');
   const nodes = [...document.querySelectorAll('[data-i18n]')];
   nodes.forEach(n => { ZH[n.dataset.i18n] = n.textContent; });
 
@@ -64,6 +81,7 @@
   function setLang(next) {
     lang = next;
     nodes.forEach(n => { n.textContent = t(n.dataset.i18n); });
+    if (cfg.booth) boothEl.textContent = cfg.booth;
     document.documentElement.lang = lang === 'en' ? 'en' : 'zh-CN';
     document.title = t('title');
     langBtn.textContent = lang === 'en' ? '中文' : 'EN';
@@ -75,8 +93,7 @@
   let saved = null;
   try { saved = localStorage.getItem('fitx-lang'); } catch {}
   const fromUrl = new URLSearchParams(location.search).get('lang');
-  const initial = fromUrl || saved || (navigator.language.toLowerCase().startsWith('zh') ? 'zh' : 'en');
-  if (initial === 'en') setLang('en');
+  setLang((fromUrl || saved) === 'zh' ? 'zh' : 'en'); // English first: this site is built for CES visitors
 
   /* ---------- Nav ---------- */
   const nav = document.getElementById('nav');
@@ -103,19 +120,42 @@
     reveals.forEach(el => el.classList.add('is-in'));
   }
 
-  /* ---------- Beta signup (no backend yet: hands off to the visitor's mail app) ---------- */
-  document.getElementById('signup').addEventListener('submit', e => {
+  /* ---------- CES sign-up ---------- */
+  const form = document.getElementById('signupForm');
+  const btn = document.getElementById('signupBtn');
+  const fail = (key, field) => { msg.textContent = t(key); field.focus(); };
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const email = e.target.email.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      msg.textContent = t('msg.bad');
-      e.target.email.focus();
+    const f = form.elements;
+    if (f.website.value) return; // honeypot: bots fill it, people never see it
+    const data = { name: f.name.value.trim(), email: f.email.value.trim(), company: f.company.value.trim(), role: f.role.value };
+    if (!data.name) return fail('msg.name', f.name);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) return fail('msg.bad', f.email);
+    if (!data.role) return fail('msg.role', f.role);
+    if (!f.consent.checked) return fail('msg.consent', f.consent);
+
+    if (!cfg.signupEndpoint) { // no receiver configured yet: hand off to the visitor's mail app
+      const body = `Name: ${data.name}\nEmail: ${data.email}\nCompany: ${data.company}\nRole: ${data.role}`;
+      location.href = `mailto:info@fitx.games?subject=${encodeURIComponent('CES 2027 sign-up')}&body=${encodeURIComponent(body)}`;
+      msg.textContent = t('msg.ok');
       return;
     }
-    const subject = encodeURIComponent('EVO Closed Beta Request');
-    const body = encodeURIComponent(`Please add me to the EVO closed beta list.\n\nEmail: ${email}`);
-    location.href = `mailto:info@fitx.games?subject=${subject}&body=${body}`;
-    msg.textContent = t('msg.ok');
+    btn.disabled = true;
+    msg.textContent = t('msg.sending');
+    try {
+      const res = await fetch(cfg.signupEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...data, lang, source: 'ces2027', submittedAt: new Date().toISOString() }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      form.reset();
+      msg.textContent = t('msg.done');
+    } catch {
+      msg.textContent = t('msg.fail');
+    } finally {
+      btn.disabled = false;
+    }
   });
 
   document.getElementById('year').textContent = new Date().getFullYear();
@@ -186,7 +226,7 @@
     // Bounding box brackets + label
     let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
     for (const k in j) { const [x, y] = P(k); minX = Math.min(minX, x); maxX = Math.max(maxX, x); minY = Math.min(minY, y); maxY = Math.max(maxY, y); }
-    const pad = h * 0.09; minX -= pad; maxX += pad; minY -= pad * 1.3; maxY += pad * 0.6;
+    const pad = h * 0.05; minX -= pad; maxX += pad; minY -= pad * 1.3; maxY += pad * 0.6;
     const c = h * 0.07;
     ctx.strokeStyle = 'rgba(255,77,31,.9)'; ctx.lineWidth = Math.max(1.5, lw * 0.6);
     ctx.beginPath();
@@ -212,9 +252,9 @@
   function frame(ms) {
     const time = ms / 1000;
     ctx.clearRect(0, 0, W, H);
-    const adultH = H * 0.66, kidH = H * 0.44, floor = H * 0.9;
-    drawFigure(pose(time * 2.6, 'jack'), W * 0.31, floor - adultH, adultH, 'P1');
-    drawFigure(pose(time * 3.4 + 1, 'dance'), W * 0.78, floor - kidH, kidH, 'P2');
+    const adultH = H * 0.56, kidH = H * 0.4, floor = H * 0.88;
+    drawFigure(pose(time * 2.6, 'jack'), W * 0.3, floor - adultH, adultH, 'P1');
+    drawFigure(pose(time * 3.4 + 1, 'dance'), W * 0.79, floor - kidH, kidH, 'P2');
   }
 
   let raf = 0, visible = true;

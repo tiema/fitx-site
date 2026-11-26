@@ -31,7 +31,7 @@
       </nav>
       <div class="nav__actions">
         <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
-        <a class="btn btn--sm" href="#beta" data-i18n="nav.cta">申请内测</a>
+        <a class="btn btn--sm" href="#signup" data-i18n="nav.cta">立即报名</a>
         <button class="burger" id="burger" type="button" aria-label="菜单" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
       </div>
     </div>
@@ -42,13 +42,13 @@
     <section class="hero" id="top">
       <div class="wrap hero__grid">
         <div class="hero__copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">AI 互动娱乐公司 · 深圳</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">CES 2027 · 1 月 6–9 日 · 拉斯维加斯</p>
           <h1 data-i18n="hero.title">让体感互动，
 轻松融入家庭日常</h1>
           <p class="lead" data-i18n="hero.lead">不用手柄，不用穿戴。站到屏幕前，你的身体就是控制器。飞拓星驰用自研空间智能引擎，把客厅变成全家人的游乐场。</p>
           <div class="hero__cta">
-            <a class="btn" href="#evo" data-i18n="hero.cta1">了解 EVO</a>
-            <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">合作洽谈</a>
+            <a class="btn" href="#signup" data-i18n="hero.cta1">预约 CES 体验</a>
+            <a class="btn btn--ghost" href="#evo" data-i18n="hero.cta2">了解 EVO</a>
           </div>
         </div>
         <div class="hero__stage" aria-hidden="true">
@@ -131,15 +131,33 @@
           <li class="reveal"><span>🏐</span><b data-i18n="g.6">休闲趣味</b></li>
         </ul>
 
-        <div class="banner reveal" id="beta">
+        <div class="banner reveal" id="signup">
           <div>
-            <h3 data-i18n="beta.title">EVO 内测即将开启</h3>
-            <p data-i18n="beta.desc">留下邮箱，第一时间获得内测资格、产品抢先看和先锋玩家权益。名额有限。</p>
+            <h3 data-i18n="su.title">CES 2027 见</h3>
+            <p data-i18n="su.desc">1 月 6–9 日，我们在拉斯维加斯。留下联系方式，预约现场体验 EVO，并第一时间获得内测资格和产品动态。</p>
+            <p class="booth" id="booth" data-i18n="su.booth">展位信息即将公布</p>
           </div>
-          <form class="signup" id="signup" novalidate>
-            <label class="sr" for="email" data-i18n="beta.label">邮箱地址</label>
-            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
-            <button class="btn" type="submit" data-i18n="beta.btn">申请内测</button>
+          <form class="signup" id="signupForm" novalidate>
+            <label class="field"><span data-i18n="su.name">姓名</span>
+              <input name="name" type="text" required autocomplete="name" maxlength="80" /></label>
+            <label class="field"><span data-i18n="su.email">邮箱</span>
+              <input name="email" type="email" required autocomplete="email" maxlength="120" /></label>
+            <label class="field"><span data-i18n="su.company">公司或机构（选填）</span>
+              <input name="company" type="text" autocomplete="organization" maxlength="120" /></label>
+            <label class="field"><span data-i18n="su.role">我是</span>
+              <select name="role" required>
+                <option value="" data-i18n="r.0">请选择</option>
+                <option value="player" data-i18n="r.1">玩家或家庭用户</option>
+                <option value="developer" data-i18n="r.2">游戏开发者或工作室</option>
+                <option value="retail" data-i18n="r.3">渠道或零售</option>
+                <option value="media" data-i18n="r.4">媒体</option>
+                <option value="investor" data-i18n="r.5">投资人</option>
+                <option value="other" data-i18n="r.6">其他</option>
+              </select></label>
+            <input class="hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <label class="consent"><input name="consent" type="checkbox" required />
+              <span data-i18n="su.consent">我同意 FitX 就 CES 活动和产品动态与我联系。</span></label>
+            <button class="btn" type="submit" id="signupBtn" data-i18n="su.btn">提交报名</button>
             <p class="signup__msg" id="signupMsg" role="status"></p>
           </form>
         </div>
@@ -243,6 +261,7 @@
     </div>
   </footer>
 
+  <script src="config.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>
