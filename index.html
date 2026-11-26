@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf8f3" />
+  <title>FitX 飞拓星驰 | AI 互动娱乐平台</title>
+  <meta name="description" content="飞拓星驰（FitX）是一家 AI 互动娱乐公司，以自研空间智能引擎打造无需手柄、无需穿戴的家庭体感互动平台 EVO。" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:title" content="FitX 飞拓星驰 | AI 互动娱乐平台" />
+  <meta property="og:description" content="让体感互动，轻松融入家庭日常。" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314130f'/%3E%3Cpath d='M18 46V18h20v7H26v5h10v7H26v9z' fill='%23faf8f3'/%3E%3Ccircle cx='46' cy='42' r='5' fill='%23ff4d1f'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip" href="#main" data-i18n="skip">跳到正文</a>
+
+  <header class="nav" id="nav">
+    <div class="wrap nav__inner">
+      <a class="logo" href="#top" aria-label="FitX">Fit<span>X</span><i></i></a>
+      <nav class="nav__links" id="navLinks" aria-label="主导航">
+        <a href="#tech" data-i18n="nav.tech">技术</a>
+        <a href="#evo" data-i18n="nav.evo">产品 EVO</a>
+        <a href="#platform" data-i18n="nav.platform">开发者</a>
+        <a href="#about" data-i18n="nav.about">关于我们</a>
+        <a href="#contact" data-i18n="nav.contact">联系</a>
+      </nav>
+      <div class="nav__actions">
+        <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+        <a class="btn btn--sm" href="#beta" data-i18n="nav.cta">申请内测</a>
+        <button class="burger" id="burger" type="button" aria-label="菜单" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow" data-i18n="hero.eyebrow">AI 互动娱乐公司 · 深圳</p>
+          <h1 data-i18n="hero.title">让体感互动，
+轻松融入家庭日常</h1>
+          <p class="lead" data-i18n="hero.lead">不用手柄，不用穿戴。站到屏幕前，你的身体就是控制器。飞拓星驰用自研空间智能引擎，把客厅变成全家人的游乐场。</p>
+          <div class="hero__cta">
+            <a class="btn" href="#evo" data-i18n="hero.cta1">了解 EVO</a>
+            <a class="btn btn--ghost" href="#contact" data-i18n="hero.cta2">合作洽谈</a>
+          </div>
+        </div>
+        <div class="hero__stage" aria-hidden="true">
+          <canvas id="pose"></canvas>
+          <div class="hud hud--tl"><b>TRACKING</b><span id="hudFps">120 FPS</span></div>
+          <div class="hud hud--br"><b>ON-DEVICE</b><span>2 PLAYERS</span></div>
+        </div>
+      </div>
+
+      <div class="wrap">
+        <dl class="stats">
+          <div><dt>120<small>+ FPS</small></dt><dd data-i18n="stat.1">实时追踪帧率</dd></div>
+          <div><dt>&lt;3<small> cm</small></dt><dd data-i18n="stat.2">姿态估计误差</dd></div>
+          <div><dt>100<small>%</small></dt><dd data-i18n="stat.3">端侧运行，画面不上云</dd></div>
+          <div><dt>4<small data-i18n="stat.4u"> 人</small></dt><dd data-i18n="stat.4">同屏互动</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section class="section section--dark" id="tech">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="tech.eyebrow">核心技术</p>
+          <h2 data-i18n="tech.title">FitX 空间智能引擎</h2>
+          <p class="sub" data-i18n="tech.sub">体感游戏的体验，长期被感知技术卡住：手柄测不准，专业动捕太贵。我们从底层算法重新做起，只用一颗普通摄像头，就能看懂整个身体。</p>
+        </header>
+        <div class="cards cards--3">
+          <article class="card reveal">
+            <span class="card__no">01</span>
+            <h3 data-i18n="tech.c1.t">全身姿态，实时还原</h3>
+            <p data-i18n="tech.c1.d">从指尖到脚尖的全身关键点追踪，帧率超过 120 FPS，误差小于 3 厘米。挥手、下蹲、跳跃，每个动作都即时映射进游戏。</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__no">02</span>
+            <h3 data-i18n="tech.c2.t">全部在端侧完成</h3>
+            <p data-i18n="tech.c2.d">所有计算在设备本地运行，摄像头画面不离开你家。延迟更低，也更让人放心。</p>
+          </article>
+          <article class="card reveal">
+            <span class="card__no">03</span>
+            <h3 data-i18n="tech.c3.t">一家人，同屏玩</h3>
+            <p data-i18n="tech.c3.d">同时识别多位玩家，大人孩子各玩各的动作，互不干扰。支持同屏互动与线上联机。</p>
+          </article>
+        </div>
+        <p class="note reveal" data-i18n="tech.note">2024 年底，团队算法在多项世界级 3D 姿态估计排行榜上取得领先成绩。</p>
+      </div>
+    </section>
+
+    <!-- EVO -->
+    <section class="section" id="evo">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="evo.eyebrow">旗舰产品</p>
+          <h2 data-i18n="evo.title">EVO：全家人的客厅游戏机</h2>
+          <p class="sub" data-i18n="evo.sub">一台手机大小的设备，放在电视前就能用。EVO 把 AI 体感、原创互动游戏和家庭互动空间合在一起，让每个人都能轻松加入。</p>
+        </header>
+
+        <div class="pillars">
+          <article class="pillar reveal">
+            <h3 data-i18n="evo.p1.t">上手即玩</h3>
+            <p data-i18n="evo.p1.d">不用穿戴，不用设置。站到屏幕前就开始。</p>
+          </article>
+          <article class="pillar reveal">
+            <h3 data-i18n="evo.p2.t">自然交互</h3>
+            <p data-i18n="evo.p2.d">真实动作驱动游戏，沉浸感来自身体本身。</p>
+          </article>
+          <article class="pillar reveal">
+            <h3 data-i18n="evo.p3.t">常玩常新</h3>
+            <p data-i18n="evo.p3.d">原创游戏和体验持续更新，总有新东西可玩。</p>
+          </article>
+        </div>
+
+        <h3 class="mini reveal" data-i18n="evo.games">六类玩法，覆盖每个家庭时刻</h3>
+        <ul class="games">
+          <li class="reveal"><span>🎉</span><b data-i18n="g.1">派对整蛊</b></li>
+          <li class="reveal"><span>🎵</span><b data-i18n="g.2">节奏舞蹈</b></li>
+          <li class="reveal"><span>⚔️</span><b data-i18n="g.3">竞技挑战</b></li>
+          <li class="reveal"><span>🏃</span><b data-i18n="g.4">健身运动</b></li>
+          <li class="reveal"><span>🧭</span><b data-i18n="g.5">冒险动作</b></li>
+          <li class="reveal"><span>🏐</span><b data-i18n="g.6">休闲趣味</b></li>
+        </ul>
+
+        <div class="banner reveal" id="beta">
+          <div>
+            <h3 data-i18n="beta.title">EVO 内测即将开启</h3>
+            <p data-i18n="beta.desc">留下邮箱，第一时间获得内测资格、产品抢先看和先锋玩家权益。名额有限。</p>
+          </div>
+          <form class="signup" id="signup" novalidate>
+            <label class="sr" for="email" data-i18n="beta.label">邮箱地址</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            <button class="btn" type="submit" data-i18n="beta.btn">申请内测</button>
+            <p class="signup__msg" id="signupMsg" role="status"></p>
+          </form>
+        </div>
+        <p class="more reveal"><a href="https://www.fitx.games/" target="_blank" rel="noopener" data-i18n="evo.more">前往 EVO 产品站 fitx.games →</a></p>
+      </div>
+    </section>
+
+    <!-- Platform -->
+    <section class="section section--tint" id="platform">
+      <div class="wrap split">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="plat.eyebrow">开放平台</p>
+          <h2 data-i18n="plat.title">把体感能力，交给每一位创作者</h2>
+          <p class="sub" data-i18n="plat.sub">硬件是入口，平台才是长期价值。我们把空间智能引擎封装成 SDK，让中小团队不必自研算法，也能做出好玩的体感内容。</p>
+          <a class="btn" href="mailto:info@fitx.games?subject=Partnership" data-i18n="plat.cta">成为合作伙伴</a>
+        </header>
+        <ul class="list">
+          <li class="reveal">
+            <h3 data-i18n="plat.l1.t">FitX SDK</h3>
+            <p data-i18n="plat.l1.d">订阅即可调用全身姿态追踪能力，先在手机端跑通，再无缝延伸到客厅。</p>
+          </li>
+          <li class="reveal">
+            <h3 data-i18n="plat.l2.t">Fit-OS</h3>
+            <p data-i18n="plat.l2.d">面向客厅场景的空间智能 Agent 平台，是 EVO 背后的系统底座。</p>
+          </li>
+          <li class="reveal">
+            <h3 data-i18n="plat.l3.t">我们在找这些伙伴</h3>
+            <p data-i18n="plat.l3.d">游戏开发者、创意工作室、IP 方与 AI 团队。一起定义下一代互动娱乐。</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="wrap">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="about.eyebrow">关于我们</p>
+          <h2 data-i18n="about.title">把真实世界的快乐互动，带回日常生活</h2>
+          <p class="sub" data-i18n="about.sub">飞拓星驰（FitX Technology）成立于 2025 年，总部位于深圳南山。创始团队由 AI 科学家和游戏行业老兵组成，创始人兼 CEO 王佳泽博士毕业于香港中文大学，研究方向为 3D 视觉与空间智能。从四位创始人出发，我们已成长为近五十人的团队。</p>
+        </header>
+
+        <ol class="timeline">
+          <li class="reveal"><time>2024</time><p data-i18n="tl.1">算法在多项世界级 3D 姿态估计榜单取得领先</p></li>
+          <li class="reveal"><time>2025</time><p data-i18n="tl.2">公司在深圳成立，从手机端 App 与 SDK 起步</p></li>
+          <li class="reveal"><time>2026.07</time><p data-i18n="tl.3">受邀参展 ChinaJoy Next Play 创新体验区</p></li>
+          <li class="reveal"><time>2026.11</time><p data-i18n="tl.4">完成数千万美元天使轮融资</p></li>
+          <li class="reveal is-next"><time>2027</time><p data-i18n="tl.5">EVO 将在 CES 首发亮相</p></li>
+        </ol>
+
+        <div class="investors reveal">
+          <p class="eyebrow" data-i18n="inv.title">投资方</p>
+          <ul>
+            <li data-i18n="inv.1">元生资本</li>
+            <li data-i18n="inv.2">江远投资</li>
+            <li data-i18n="inv.3">日初资本</li>
+            <li data-i18n="inv.4">锋领资本</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section--dark" id="contact">
+      <div class="wrap contact">
+        <header class="section__head reveal">
+          <p class="eyebrow" data-i18n="ct.eyebrow">联系我们</p>
+          <h2 data-i18n="ct.title">一起创造互动娱乐的未来</h2>
+        </header>
+        <div class="contact__grid">
+          <div class="reveal">
+            <h3 data-i18n="ct.biz">商务与合作</h3>
+            <a class="big" href="mailto:info@fitx.games">info@fitx.games</a>
+          </div>
+          <div class="reveal">
+            <h3 data-i18n="ct.jobs">加入我们</h3>
+            <p data-i18n="ct.jobs.d">想和我们一起做这件事？把简历发到邮箱，注明意向岗位。</p>
+          </div>
+          <div class="reveal">
+            <h3 data-i18n="ct.addr">地址</h3>
+            <p data-i18n="ct.addr.d">中国深圳市南山区</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div>
+        <a class="logo" href="#top" aria-label="FitX">Fit<span>X</span><i></i></a>
+        <p>© <span id="year">2026</span> Shenzhen FitX Technology Co., Ltd.</p>
+      </div>
+      <ul class="social">
+        <li><a href="https://discord.com/invite/PT2nSQng8P" target="_blank" rel="noopener">Discord</a></li>
+        <li><a href="https://www.youtube.com/@EVO-fitx" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://www.tiktok.com/@evo.fitx" target="_blank" rel="noopener">TikTok</a></li>
+        <li><a href="https://x.com/FitxGAME" target="_blank" rel="noopener">X</a></li>
+        <li><a href="https://www.instagram.com/oasisx.fitx/" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
